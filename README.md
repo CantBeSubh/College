@@ -1,2 +1,2 @@
 # College
-VIT C Coding stuff
+VIT-C Coding stuff
