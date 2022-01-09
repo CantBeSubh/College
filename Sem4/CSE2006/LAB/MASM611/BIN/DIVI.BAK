@@ -1,0 +1,10 @@
+code segment
+assume cs:code
+start:
+  mov ax,0909h
+  and bx,0303h
+  ;div ax
+hlt
+code ends
+end
+  

@@ -1,0 +1,56 @@
+ The Microsoft MACRO Assembler , Version 1.25          	Page	1-1
+	 	 	 	 	 	 	01-25-;0    
+
+
+ 	 	 	 	;       Example - 1
+ 	 	 	 	;       File Name :DAC1.ASM
+ 	 	 	 	;----------------------------------------------
+	 	 	 	-------
+ 	 	 	 	;       Routine to output data to dac1
+ 	 	 	 	;----------------------------------------------
+	 	 	 	-------
+ 0000	 	 	 	 	code    segment
+ 	 	 	 	 	 	assume  cs:code,        ds:code
+ 	 	 	 	;
+ 	 	 	 	;        assume I/O base address 1000h
+ 	 	 	 	;
+ = 1000	 	 	 	 	dac1    equ     1000h
+ 	 	 	 	;
+ 	 	 	 	;----------------------------------------------
+	 	 	 	-------
+ 	 	 	 	;       Main program starts from address 100h
+ 	 	 	 	;----------------------------------------------
+	 	 	 	-------
+ 1000	 	 	 	 	 	org     1000h
+ 1000	 	 	 	 	begin:          
+ 1000  BA 1000	 	 	 	 	mov     dx,dac1
+ 1003  B0 7F	 	 	 	 	mov     al,7fh          ;output
+	 	 	 	 data 7f to DAC1
+ 1005  EE	 	 	 	 	out     dx,al           
+ 1006  B4 4C	 	 	 	 	mov     ah,4ch          ;exit t
+	 	 	 	o DOS
+ 1008  CD 21	 	 	 	 	int     21h
+ 100A	 	 	 	 	code    ends    
+ 	 	 	 	 	 	end     begin
+
+ The Microsoft MACRO Assembler , Version 1.25          	Page	Symbols
+	 	 	 	-1
+	 	 	 	 	 	 	01-25-;0    
+
+
+Segments and groups:
+
+	 	N a m e	 	 	Size	align	combine	class
+
+CODE . . . . . . . . . . . . . .	100A	PARA  	NONE	
+
+Symbols:            
+
+	 	N a m e	 	 	Type	Value	Attr         
+
+BEGIN. . . . . . . . . . . . . .	L NEAR 	1000	CODE
+DAC1 . . . . . . . . . . . . . .	Number	1000	
+
+Warning Severe
+Errors	Errors 
+0	0

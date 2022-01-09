@@ -1,0 +1,33 @@
+ The Microsoft MACRO Assembler , Version 1.25          	Page	1-1
+	 	 	 	 	 	 	03-11-;0    
+
+
+ 0000	 	 	 	CODE SEGMENT
+ 	 	 	 	ASSUME CS:CODE,DS:CODE
+ 1000	 	 	 	ORG 1000H
+ 1000  A1 0009 U	 	MOV AX,11OOH
+ E r r o r   ---	9:Symbol not defined            
+ 1003  F7 F0	 	 	DIV AX,1102H 
+ E r r o r   ---	1:Extra characters on line      
+ 1005  C7 86 04B0 0054	 	MOV 1200,84
+ E r r o r   ---	56:No immediate mode             
+ 100B  89 96 04B2	 	MOV 1202,DX
+ E r r o r   ---	56:No immediate mode             
+ 100F  F4	 	 	HLT
+ 1010	 	 	 	CODE ENDS
+ 	 	 	 	END
+
+ The Microsoft MACRO Assembler , Version 1.25          	Page	Symbols
+	 	 	 	-1
+	 	 	 	 	 	 	03-11-;0    
+
+
+Segments and groups:
+
+	 	N a m e	 	 	Size	align	combine	class
+
+CODE . . . . . . . . . . . . . .	1010	PARA  	NONE	
+
+Warning Severe
+Errors	Errors 
+1	3
