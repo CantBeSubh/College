@@ -44,5 +44,5 @@ graph.add_edge(8,4,8)
 graph.add_edge(8,0,4)
 
 graph.print_graph()
-
 print ("Internal representation: ", graph.graph)
+
