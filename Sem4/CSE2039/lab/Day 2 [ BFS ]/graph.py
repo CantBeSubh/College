@@ -11,7 +11,7 @@ data=[]
 vertices_no = 0
 
 
-def add_vertex(v):                                          # Add a vertex to the dictionary
+def add_vertex(v):# Add a vertex to the dictionary
   global graph
   global vertices_no
   if v in graph:
@@ -21,7 +21,7 @@ def add_vertex(v):                                          # Add a vertex to th
     graph[v] = []
 
 
-def add_edge(v1, v2, e):                                    # Add an edge between vertex v1 and v2 with edge weight e
+def add_edge(v1, v2, e):# Add an edge
   global graph
   if v1 not in graph:
     print("Vertex ", v1, " does not exist.")
@@ -32,7 +32,7 @@ def add_edge(v1, v2, e):                                    # Add an edge betwee
 
 
 def find_all_paths(start, end, path=[]):   
-    global graph                                            #find all possible paths
+    global graph#find all possible paths
     path = path + [start]
     if start == end:
         return [path]
@@ -47,7 +47,7 @@ def find_all_paths(start, end, path=[]):
     return paths
 
 
-def weight(path):                                           #Calculate weight for given path
+def weight(path):#Calculate weight for given path
     global graph
     total_weight=0
     for i in range(0,len(path)):
@@ -63,7 +63,7 @@ def weight(path):                                           #Calculate weight fo
     return total_weight
 
 
-def cook_data():                                            #cook data
+def cook_data():#cook data
     global graph
     global all_paths
     global data
@@ -73,7 +73,7 @@ def cook_data():                                            #cook data
     return data
 
 
-def find_shortest_path():                               #shortest Path
+def find_shortest_path():#shortest Path
     global data
     min_path=[]
     min_wt=1000000
@@ -83,13 +83,13 @@ def find_shortest_path():                               #shortest Path
             min_path=path.copy()
     return min_path,min_wt
 
-def print_paths():
+def print_paths():#Print the paths
     global data
     for path,wt in data:
         print(*path,sep=' -> ',end=' | ')
         print(wt)
 
-def print_graph():                                          # Print the graph
+def print_graph():# Print the graph
   global graph
   for vertex in graph:
     for edges in graph[vertex]:
