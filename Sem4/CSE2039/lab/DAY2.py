@@ -1,68 +1,48 @@
-#BFS in python by 20BRS1064
-#11th Jan 2021
-# Python3 Program to print BFS traversal
-# from a given source vertex. BFS(int s)
-# traverses vertices reachable from s.
-from collections import defaultdict
+#1 possible paths
+#2 path cost
+#3 best path(Dijikstra)
+import graph
 
-# This class represents a directed graph
-# using adjacency list representation
-class Graph:
+graph.add_vertex(0)
+graph.add_vertex(1) 
+graph.add_vertex(2)
+graph.add_vertex(3)
+graph.add_vertex(4)
+graph.add_vertex(5)
+graph.add_vertex(6)
+graph.add_vertex(7)
+graph.add_vertex(8)
 
-    # Constructor
-    def __init__(self):
 
-        # default dictionary to store graph
-        self.graph = defaultdict(list)
+graph.add_edge(0,1,3)
+graph.add_edge(0,8,4)
+graph.add_edge(0,3,2)
 
-    # function to add an edge to graph
-    def addEdge(self,u,v):
-        self.graph[u].append(v)
+graph.add_edge(1,0,3)
+graph.add_edge(1,7,4)
 
-    # Function to print a BFS of graph
-    def BFS(self, s):
+graph.add_edge(2,7,2)
+graph.add_edge(2,3,6)
+graph.add_edge(2,5,1)
 
-        # Mark all the vertices as not visited
-        visited = [False] * (max(self.graph) + 1)
+graph.add_edge(3,4,1)
+graph.add_edge(3,0,2)
+graph.add_edge(3,2,6)
 
-        # Create a queue for BFS
-        queue = []
+graph.add_edge(4,8,8)
+graph.add_edge(4,3,1)
 
-        # Mark the source node as 
-        # visited and enqueue it
-        queue.append(s)
-        visited[s] = True
+graph.add_edge(5,6,8)
+graph.add_edge(5,2,1)
 
-        while queue:
+graph.add_edge(6,5,8)
 
-            # Dequeue a vertex from 
-            # queue and print it
-            s = queue.pop(0)
-            print (s, end = " ")
+graph.add_edge(7,1,4)
+graph.add_edge(7,2,2)
 
-            # Get all adjacent vertices of the
-            # dequeued vertex s. If a adjacent
-            # has not been visited, then mark it
-            # visited and enqueue it
-            for i in self.graph[s]:
-                if visited[i] == False:
-                    queue.append(i)
-                    visited[i] = True
+graph.add_edge(8,4,8)
+graph.add_edge(8,0,4)
 
-# Driver code
+graph.print_graph()
 
-# Create a graph given in
-# the above diagram
-g = Graph()
-g.addEdge(0, 1)
-g.addEdge(0, 2)
-g.addEdge(1, 2)
-g.addEdge(2, 0)
-g.addEdge(2, 3)
-g.addEdge(3, 3)
-
-print ("Following is Breadth First Traversal"
-                  " (starting from vertex 2)")
-g.BFS(2)
-
-# This code is contributed by Neelam Yadav
+print ("Internal representation: ", graph.graph)
