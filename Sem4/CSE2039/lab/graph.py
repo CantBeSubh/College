@@ -1,5 +1,6 @@
 #global vars
 graph = {}
+all_paths=[]
 data=[]
 vertices_no = 0
 
@@ -32,9 +33,9 @@ def print_graph():                                          # Print the graph
       print(vertex, " -> ", edges[0], " edge weight: ", edges[1])
 
 
-def find_all_paths(graph, start, end, path=[]):             #find all possible paths
+def find_all_paths(start, end, path=[]):   
+    global graph                                            #find all possible paths
     path = path + [start]
-    print('path ',path)
     if start == end:
         return [path]
     if not(start in [*graph]):
@@ -42,13 +43,14 @@ def find_all_paths(graph, start, end, path=[]):             #find all possible p
     paths = []
     for node,wt in graph[start]:
         if node not in path: 
-            newpaths = find_all_paths(graph, node, end, path)
+            newpaths = find_all_paths(node, end, path)
             for newpath in newpaths:
                 paths.append(newpath)               
     return paths
 
 
-def weight(graph,path):                                     #Calculate weight for given path
+def weight(path):                                           #Calculate weight for given path
+    global graph
     total_weight=0
     for i in range(0,len(path)):
         if i+1==len(path):
@@ -64,13 +66,17 @@ def weight(graph,path):                                     #Calculate weight fo
 
 
 def cook_data():                                            #cook data
-    all_path=find_all_paths(graph, 0,6)
-    for path in all_path:
-        data.append((path,weight(graph,path)))
+    global graph
+    global all_paths
+    global data
+
+    for path in all_paths:
+        data.append((path,weight(path)))
     return data
 
 
-def find_shortest_path(data):                               #shortest Path
+def find_shortest_path():                               #shortest Path
+    global data
     min_path=[]
     min_wt=1000000
     for path,wt in data:
@@ -79,3 +85,5 @@ def find_shortest_path(data):                               #shortest Path
             min_path=path.copy()
     return min_path,min_wt
 
+def print_paths():
+    print(all_paths)
