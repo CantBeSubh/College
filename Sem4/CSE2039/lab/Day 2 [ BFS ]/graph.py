@@ -1,3 +1,9 @@
+#Libraries
+import json
+from os import sep
+
+from termcolor import colored,cprint
+
 #global vars
 graph = {}
 all_paths=[]
@@ -23,14 +29,6 @@ def add_edge(v1, v2, e):                                    # Add an edge betwee
     print("Vertex ", v2, " does not exist.")
   else:
     graph[v1].append((v2, e))
-
-
-
-def print_graph():                                          # Print the graph
-  global graph
-  for vertex in graph:
-    for edges in graph[vertex]:
-      print(vertex, " -> ", edges[0], " edge weight: ", edges[1])
 
 
 def find_all_paths(start, end, path=[]):   
@@ -86,4 +84,13 @@ def find_shortest_path():                               #shortest Path
     return min_path,min_wt
 
 def print_paths():
-    print(all_paths)
+    global data
+    for path,wt in data:
+        print(*path,sep=' -> ',end=' | ')
+        print(wt)
+
+def print_graph():                                          # Print the graph
+  global graph
+  for vertex in graph:
+    for edges in graph[vertex]:
+      print(colored(str(vertex) + " -> "+ str(edges[0])+" | "+str(edges[1]),'white'))
