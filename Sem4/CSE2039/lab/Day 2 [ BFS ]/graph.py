@@ -1,8 +1,5 @@
 #Libraries
-import json
-from os import sep
-
-from termcolor import colored,cprint
+from termcolor import colored
 
 #global vars
 graph = {}
