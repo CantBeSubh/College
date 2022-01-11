@@ -1,17 +1,24 @@
-#1 possible paths
-#2 path cost
-#3 best path
+#1 possible paths ✔
+#2 path cost ✔
+#3 best path ✔
 
 import graph
+from termcolor import colored,cprint
+from randomColor import rand
 
-n=int(input('Enter number of vertex: '))
+cprint('----------------BFS----------------','green')
+
+cprint('[*]Booting...','blue')
+
+n=int(input('[!]Enter number of vertex: '))
 for i in range(n):
     graph.add_vertex(i)
 
 while(True):
-    opt=input('Add an edge?(Y for yes | N for No) ')
+    opt=input('[?]Add an edge?(Y for yes | N for No) ')
     if(opt.upper()=='N'):
         break
+
     _from=int(input('From: '))
     _to=int(input('To: '))
     _weight=int(input('Weight: '))

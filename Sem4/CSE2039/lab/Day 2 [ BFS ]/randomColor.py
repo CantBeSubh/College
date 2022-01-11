@@ -1,7 +1,5 @@
-from termcolor import colored,cprint
 import random
 color=[
-    'grey',
     'red',
     'green',
     'yellow',
