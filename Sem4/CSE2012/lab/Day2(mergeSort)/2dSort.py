@@ -49,15 +49,13 @@ def mergeSort(arr, l, r):
 
 arr=[]
 
-elem_size=int(input('[?]Enter element size: '))
-
 for size in [10,50,100,500,1000,5000,10000,50000,100000,500000,1000000]:
     print('[*]Sorting With X')
     begin=time.time()
-    print('[*]Genrating array...')
+    print('[*]Genrating array of SIZE=',size,'...')
 
     for j in range(size):
-        arr.append([round(random()*elem_size),round(random()*elem_size)])
+        arr.append([round(random()*size),round(random()*size)])
 
     print('[+]Array: ',end='')
     print(arr[0],arr[1],'...',arr[size-2],arr[size-1])
@@ -71,13 +69,14 @@ for size in [10,50,100,500,1000,5000,10000,50000,100000,500000,1000000]:
 
     print('[!]Execution time: ',(end-begin)*1000)
     print('[!]Comprision count: ',COUNT)
+    arr=[]
     print('----')
     print('[*]Sorting With Y')
     begin=time.time()
 
     print('[*]Genrating array...')
     for j in range(size):
-        arr.append([round(random()*elem_size),round(random()*elem_size)])
+        arr.append([round(random()*size),round(random()*size)])
 
     print('[+]Array: ',end='')
     print(arr[0],arr[1],'...',arr[size-2],arr[size-1])

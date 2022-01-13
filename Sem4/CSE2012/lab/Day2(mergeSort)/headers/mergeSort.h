@@ -2,57 +2,57 @@
 using namespace std;
 int COUNT=0;
 
-void merge(int array[], int const left, int const mid, int const right){
-	auto const subArrayOne = mid - left + 1;
-	auto const subArrayTwo = right - mid;
+void merge(int arr[], int const l, int const m, int const r){
+	auto const sub1 = m - l + 1;
+	auto const sub2 = r - m;
 
-	auto *leftArray = new int[subArrayOne],
-		*rightArray = new int[subArrayTwo];
+	auto *lArr = new int[sub1],
+		*rArr = new int[sub2];
 
-	for (auto i = 0; i < subArrayOne; i++)
-		leftArray[i] = array[left + i];
-	for (auto j = 0; j < subArrayTwo; j++)
-		rightArray[j] = array[mid + 1 + j];
+	for (auto i = 0; i < sub1; i++)
+		lArr[i] = arr[l + i];
+	for (auto j = 0; j < sub2; j++)
+		rArr[j] = arr[m + 1 + j];
 
-	auto indexOfSubArrayOne = 0, 
-		indexOfSubArrayTwo = 0; 
-	int indexOfMergedArray = left; 
+	auto indexOfSub1 = 0, 
+		indexOfSub2 = 0; 
+	int indexOfMergedarr = l; 
 
-	while (indexOfSubArrayOne < subArrayOne && indexOfSubArrayTwo < subArrayTwo) {
-		if (leftArray[indexOfSubArrayOne] <= rightArray[indexOfSubArrayTwo]) {
+	while (indexOfSub1 < sub1 && indexOfSub2 < sub2) {
+		if (lArr[indexOfSub1] <= rArr[indexOfSub2]) {
 			COUNT+=1;
-			array[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
-			indexOfSubArrayOne++;
+			arr[indexOfMergedarr] = lArr[indexOfSub1];
+			indexOfSub1++;
 		}
 		else {
 			COUNT+=1;
-			array[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
-			indexOfSubArrayTwo++;
+			arr[indexOfMergedarr] = rArr[indexOfSub2];
+			indexOfSub2++;
 		}
-		indexOfMergedArray++;
+		indexOfMergedarr++;
 	}
 
-	while (indexOfSubArrayOne < subArrayOne) {
-		array[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
-		indexOfSubArrayOne++;
-		indexOfMergedArray++;
+	while (indexOfSub1 < sub1) {
+		arr[indexOfMergedarr] = lArr[indexOfSub1];
+		indexOfSub1++;
+		indexOfMergedarr++;
 	}
 
-	while (indexOfSubArrayTwo < subArrayTwo) {
-		array[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
-		indexOfSubArrayTwo++;
-		indexOfMergedArray++;
+	while (indexOfSub2 < sub2) {
+		arr[indexOfMergedarr] = rArr[indexOfSub2];
+		indexOfSub2++;
+		indexOfMergedarr++;
 	}
 }
 
-void mergeSort(int array[], int const begin, int const end){
+void mergeSort(int arr[], int const begin, int const end){
 	if (begin >= end)
 		return; 
 
-	auto mid = begin + (end - begin) / 2;
-	mergeSort(array, begin, mid);
-	mergeSort(array, mid + 1, end);
-	merge(array, begin, mid, end);
+	auto m = begin + (end - begin) / 2;
+	mergeSort(arr, begin, m);
+	mergeSort(arr, m + 1, end);
+	merge(arr, begin, m, end);
 }
 
 void printArray(int A[], int size){
