@@ -16,7 +16,7 @@ ________\///______________\///____\//////////__\///___________\////////_____\///
 )";
 
     cout<<endl;
-    cout<<"[?]Enter Mode (`T` => TEST MODE | `any char` for NORMAL MODE): ";
+    cout<<"[?]Enter Mode: ";
     cin>>testMode;
     app(testMode);
     return 0;

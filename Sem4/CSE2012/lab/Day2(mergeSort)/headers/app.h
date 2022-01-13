@@ -31,10 +31,10 @@ void app(char T){
             begin=0;end=0;
             cout<<endl<<endl<<"[!]Time spent(ms): "<<time_spent<<endl;
             printCount();
-            cout<<endl<<endl;
-            cout<<"----------------------"<<endl<<endl;
+            cout<<endl;
+            cout<<"----------------------"<<endl;
         }
-        cout<<"Press any key to exit..."<<endl;
+        cout<<endl<<"Press any key to exit..."<<endl;
         getch();
         return;
     }
@@ -57,9 +57,9 @@ void app(char T){
         clock_t end=clock();
 
         double time_spent=(double)(end-begin);
-        cout<<endl<<endl<<"[!]Time spent(ms): "<<time_spent<<endl;
+        cout<<endl<<"[!]Time spent(ms): "<<time_spent<<endl;
         printCount();
-        cout<<endl<<endl;
+        cout<<endl;
         cout<<"----------------------"<<endl<<endl;
         cout<<"Press any key to exit..."<<endl;
         getch();
