@@ -18,18 +18,21 @@ void app(char T){
             clock_t begin=clock();
 
             int *arr = genRand(testArrSize[a]); 
-            cout << "[+]Given array(SIZE="<<testArrSize[a]<<")"<<endl;
+            cout << "[+]Given array(SIZE="<<testArrSize[a]<<"): ";
             printArray(arr,testArrSize[a]);
             cout<<endl<<"[*]Sorting...";
             mergeSort(arr, 0,testArrSize[a] - 1);
-            cout << endl<<"[+]Sorted array"<<endl;
+            cout << endl<<"[+]Sorted array: ";
             printArray(arr,testArrSize[a]);
 
             clock_t end=clock();
 
             double time_spent=(double)(end-begin);
             begin=0;end=0;
-            cout<<endl<<endl<<"[!]Time spent(ms): "<<time_spent<<endl<<endl;
+            cout<<endl<<endl<<"[!]Time spent(ms): "<<time_spent<<endl;
+            printCount();
+            cout<<endl<<endl;
+            cout<<"----------------------"<<endl<<endl;
         }
         cout<<"Press any key to exit..."<<endl;
         getch();
@@ -44,17 +47,20 @@ void app(char T){
         clock_t begin=clock();
 
         int *arr = genRand(arrSize,elemSize); 
-        cout << "[+]Given array is"<<endl;
+        cout << "[+]Given array: ";
         printArray(arr,arrSize);
         cout<<endl<<"[*]Sorting...";
         mergeSort(arr, 0,arrSize - 1);
-        cout<<endl<<"Sorted array is";
+        cout<<endl<<"Sorted array: ";
         printArray(arr,arrSize);
         
         clock_t end=clock();
 
         double time_spent=(double)(end-begin);
-        cout<<endl<<"[!]Time spent(ms): "<<time_spent<<endl;
+        cout<<endl<<endl<<"[!]Time spent(ms): "<<time_spent<<endl;
+        printCount();
+        cout<<endl<<endl;
+        cout<<"----------------------"<<endl<<endl;
         cout<<"Press any key to exit..."<<endl;
         getch();
         return;

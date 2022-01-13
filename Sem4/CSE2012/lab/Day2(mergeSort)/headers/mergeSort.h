@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+int COUNT=0;
 
 void merge(int array[], int const left, int const mid, int const right){
 	auto const subArrayOne = mid - left + 1;
@@ -19,10 +20,12 @@ void merge(int array[], int const left, int const mid, int const right){
 
 	while (indexOfSubArrayOne < subArrayOne && indexOfSubArrayTwo < subArrayTwo) {
 		if (leftArray[indexOfSubArrayOne] <= rightArray[indexOfSubArrayTwo]) {
+			COUNT+=1;
 			array[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
 			indexOfSubArrayOne++;
 		}
 		else {
+			COUNT+=1;
 			array[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
 			indexOfSubArrayTwo++;
 		}
@@ -54,4 +57,9 @@ void mergeSort(int array[], int const begin, int const end){
 
 void printArray(int A[], int size){
 	cout << A[0] << " | " << A[1] << " ... " << A[size-2] << " | " << A[size-1];
+}
+
+void printCount(){
+	cout<<"[!]Comparision count: "<<COUNT;
+	COUNT=0;
 }
