@@ -12,46 +12,49 @@ void app(char T){
 
     if(T == 'T'){
 
-        int testArrSize[4]={10,50,250,1000};
+        int testArrSize[10]={10,50,250,1000,5000,10000,50000,100000,500000,1000000};
 
-        for(int a=0;a<4;a++){
+        for(int a=0;a<10;a++){
             clock_t begin=clock();
 
             int *arr = genRand(testArrSize[a]); 
-            cout << "Given array(size="<<testArrSize[a]<<")\n";
+            cout << "[+]Given array(SIZE="<<testArrSize[a]<<")"<<endl;
             printArray(arr,testArrSize[a]);
+            cout<<endl<<"[*]Sorting...";
             mergeSort(arr, 0,testArrSize[a] - 1);
-            cout << "\nSorted array \n";
+            cout << endl<<"[+]Sorted array"<<endl;
             printArray(arr,testArrSize[a]);
 
             clock_t end=clock();
 
             double time_spent=(double)(end-begin);
-            cout<<endl<<"Time spent(ms): "<<time_spent<<endl;
-            cout<<"Press any key to continue..."<<endl;
-            getch();
+            begin=0;end=0;
+            cout<<endl<<endl<<"[!]Time spent(ms): "<<time_spent<<endl<<endl;
         }
+        cout<<"Press any key to exit..."<<endl;
+        getch();
         return;
     }
     else{
-        cout<<"Enter Array Size: ";
+        cout<<"[?]Enter Array Size: ";
         cin>>arrSize;
-        cout<<"Enter Ellement Size: ";
+        cout<<"[?]Enter Ellement Size: ";
         cin>>elemSize;
 
         clock_t begin=clock();
 
         int *arr = genRand(arrSize,elemSize); 
-        cout << "Given array is \n";
+        cout << "[+]Given array is"<<endl;
         printArray(arr,arrSize);
+        cout<<endl<<"[*]Sorting...";
         mergeSort(arr, 0,arrSize - 1);
-        cout << "\nSorted array is \n";
+        cout<<endl<<"Sorted array is";
         printArray(arr,arrSize);
         
         clock_t end=clock();
 
         double time_spent=(double)(end-begin);
-        cout<<endl<<"Time spent(ms): "<<time_spent<<endl;
+        cout<<endl<<"[!]Time spent(ms): "<<time_spent<<endl;
         cout<<"Press any key to exit..."<<endl;
         getch();
         return;
