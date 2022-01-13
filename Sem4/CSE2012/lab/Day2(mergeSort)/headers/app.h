@@ -1,27 +1,28 @@
 #include <iostream>
 #include <conio.h>
 #include <time.h>
+#include <stdlib.h>
 #include "randomizer.h"
 #include "mergeSort.h"
 using namespace std;
 
-void app(char T='a'){
+void app(char T){
 
-    int arr_size,elem_size;
+    int arrSize,elemSize;
 
-    if(T=='T' || T=='t'){
+    if(T == 'T'){
 
-        int test_arr_size[4]={10,50,250,1000};
+        int testArrSize[4]={10,50,250,1000};
 
         for(int a=0;a<4;a++){
             clock_t begin=clock();
 
-            int *arr = genRand(test_arr_size[a]); 
-            cout << "Given array(size="<<test_arr_size[a]<<")\n";
-            printArray(arr,test_arr_size[a]);
-            mergeSort(arr, 0,test_arr_size[a] - 1);
+            int *arr = genRand(testArrSize[a]); 
+            cout << "Given array(size="<<testArrSize[a]<<")\n";
+            printArray(arr,testArrSize[a]);
+            mergeSort(arr, 0,testArrSize[a] - 1);
             cout << "\nSorted array \n";
-            printArray(arr,test_arr_size[a]);
+            printArray(arr,testArrSize[a]);
 
             clock_t end=clock();
 
@@ -34,18 +35,18 @@ void app(char T='a'){
     }
     else{
         cout<<"Enter Array Size: ";
-        cin>>arr_size;
+        cin>>arrSize;
         cout<<"Enter Ellement Size: ";
-        cin>>elem_size;
+        cin>>elemSize;
 
         clock_t begin=clock();
 
-        int *arr = genRand(arr_size,elem_size); 
+        int *arr = genRand(arrSize,elemSize); 
         cout << "Given array is \n";
-        printArray(arr,arr_size);
-        mergeSort(arr, 0,arr_size - 1);
+        printArray(arr,arrSize);
+        mergeSort(arr, 0,arrSize - 1);
         cout << "\nSorted array is \n";
-        printArray(arr,arr_size);
+        printArray(arr,arrSize);
         
         clock_t end=clock();
 

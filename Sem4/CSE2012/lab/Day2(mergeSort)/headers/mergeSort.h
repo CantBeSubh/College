@@ -53,6 +53,11 @@ void mergeSort(int array[], int const begin, int const end){
 }
 
 void printArray(int A[], int size){
-	for (auto i = 0; i < size; i++)
-		cout << A[i] << " ";
+	if(size<100){
+		for (auto i = 0; i < size; i++)
+			cout << A[i] << " ";
+	}
+	else{
+			cout << A[0] << " " << A[1] << " ... " << A[size-2] << " " << A[size-1];
+	}
 }
