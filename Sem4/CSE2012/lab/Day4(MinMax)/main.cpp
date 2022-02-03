@@ -42,6 +42,7 @@ int main(){
     char M;
     cout<<"[?]ENTER MODE: ";
     cin>>M;
+    
     if(M=='T'){
         long long int testSize[10]={10,50,100,500,1000,10000,50000,100000,500000,1000000};
         for(int i=0;i<10;i++){
@@ -61,7 +62,8 @@ int main(){
             cout<<endl<<"--------------------";
         }
         return 0;
-    }else{
+    }
+    else{
         cout<<("[?]Enter size: ");
         cin>>n;
         srand(time(0));
