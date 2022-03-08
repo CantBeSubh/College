@@ -1,15 +1,17 @@
 ASSUME CS:CODE
 CODE SEGMENT
         START:
-        MOV AH, 10H
-        MOV BL, 0FH
-        MOV CL, 04H
-        ROR AH, CL
-        AND AH, BL
-        AND AH, 25H
-        MOV AL, 10H
-        AND AL, BL
-        ADD AL, 25H
+        MOV AX, 25H
+        AND AX, 0FH
+        MOV BX, AX
+        MOV AX, 25H
+        AND AX, 0F0H
+        MOV CL, 03H
+        ROR AL, CL
+        MOV CX, 0AH
+        MUL CX
+        ADD AX, BX
+        INT 21H
         HLT
     CODE ENDS
 END START

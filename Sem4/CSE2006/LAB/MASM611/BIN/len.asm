@@ -1,0 +1,33 @@
+DATA SEGMENT
+    MSG DB "Subrnashu", "$"
+    MSG1 DB "Length:", "$"
+DATA ENDS
+CODE SEGMENT
+ASSUME CS:CODE,DS:DATA
+START:
+MOV AX, DATA
+MOV DS, AX
+LEA SI, MSG
+MOV CL, 00H
+MOV AL, "$"
+RPT:
+    MOV AH, [SI]
+    CMP AL, AH
+    JE R1
+    INC CL
+    INC SI
+    JMP RPT
+R1:
+    LEA DX, MSG1
+    MOV AH, 09H
+    INT 21H 
+    MOV DX, 000H
+    MOV DL, CL
+    ADD DL, 30H
+    MOV AH, 02H
+    INT 21H
+    MOV AH, 4CH
+    INT 21H
+HLT
+CODE ENDS
+END START
