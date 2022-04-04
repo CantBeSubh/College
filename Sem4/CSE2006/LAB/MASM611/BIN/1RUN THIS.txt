@@ -1,0 +1,3 @@
+MOUNT c /home/kali/Documents/College/Sem4/CSE2006/LAB/MASM611/BIN
+c:
+cls
