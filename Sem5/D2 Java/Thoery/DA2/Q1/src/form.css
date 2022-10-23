@@ -1,19 +1,31 @@
 .root {
-  -fx-background-color: Wheat;
+  -fx-background-color: #1f2029;
   -fx-alignment: center;
-  -fx-background-radius: 100;
 }
 .label {
-  -fx-font-size: 18pt;
-  -fx-font: bold 10pt "Arial";
+  -fx-font-size: 22;
+  /* -fx-font: bold 10 "Arial"; */
+  -fx-effect: dropshadow(one-pass-box, grey, 20, 00, 0, 0);
+  -fx-text-fill: white;
+
   -fx-padding: 10;
 }
 .button {
-  -fx-effect: dropshadow(one-pass-box, black, 8, 0, 2, 0);
+  -fx-effect: dropshadow(one-pass-box, grey, 8, 0, 2, 0);
   -fx-border-radius: 20;
-  -fx-font: bold10pt "Arial";
+  -fx-font: bold 20 "Arial";
+  -fx-background-color: darkslateblue;
+  -fx-text-fill: white;
 }
+
 #title {
-  -fx-font: bold20pt "Arial";
-  -fx-effect: dropshadow(one-pass-box, GREEN, 8, 0, 2, 0);
+  -fx-font: 48 "Arial";
+  -fx-text-fill: #ffeba7;
+  -fx-effect: dropshadow(one-pass-box, grey, 20, 0, 0, 0);
+}
+
+#res {
+  -fx-font: 28 "Arial";
+  -fx-text-fill: #ffeba7;
+  -fx-effect: dropshadow(one-pass-box, grey, 5, 00, 0, 0);
 }

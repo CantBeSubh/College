@@ -4,13 +4,14 @@ import javafx.application.Application;
 
 import javafx.scene.Scene;
 
+import javafx.geometry.Pos;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ComboBox;
 
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import javafx.event.ActionEvent;
@@ -70,12 +71,13 @@ public class Main extends Application {
         TextField tf1 = new TextField();
 
         // Title
-        Text title = new Text();
+        Label title = new Label();
         title.setText("DA2 CSE1007 Q1");
-        title.setX(120);
-        title.setY(120);
-        title.setUnderline(true);
+        Label res = new Label();
+        // title.setX(120);
+        // title.setY(120);
         title.setId("title");
+        res.setId("res");
 
         // Dropdown Menu
         String options[] = { "Factorial", "Sum of Natural Numbers", "Positive or Negative", "Even or Odd",
@@ -110,22 +112,22 @@ public class Main extends Application {
 
                 switch (index) {
                     case 0:
-                        selected.setText("Factorial of " + n + " is " + factorial(n));
+                        res.setText("Factorial of " + n + " is " + factorial(n));
                         break;
                     case 1:
-                        selected.setText("Sum of " + n + " natural numbers is " + sum(n));
+                        res.setText("Sum of first " + n + " natural numbers is " + sum(n));
                         break;
                     case 2:
-                        selected.setText(n + " is " + positiveOrNegative(n));
+                        res.setText(n + " is " + positiveOrNegative(n));
                         break;
                     case 3:
-                        selected.setText(n + " is " + evenOrOdd(n));
+                        res.setText(n + " is " + evenOrOdd(n));
                         break;
                     case 4:
-                        selected.setText("ASCII value of " + val + " is " + ascii(val.charAt(0)));
+                        res.setText("ASCII value of " + val + " is " + ascii(val.charAt(0)));
                         break;
                     case 5:
-                        selected.setText("FIBB: " + fibb(n));
+                        res.setText("FIBB: " + fibb(n));
                         break;
                 }
             }
@@ -133,16 +135,23 @@ public class Main extends Application {
 
         // Grid-pane
         GridPane root = new GridPane();
+        // Gap
+        root.setVgap(5);
+        root.setHgap(5);
+        // Alignment
+        root.setAlignment(Pos.CENTER);
         // Nodes
-        root.addRow(0, title);
-        root.addRow(1, input, tf1, combo_box);
-        root.addRow(2, Submit);
-        root.addRow(3, selected);
+        // root.addRow(0, title);
+        root.addRow(1, input, tf1);
+        root.addRow(2, selected, combo_box);
+        root.addRow(3, Submit);
+        root.addRow(4, res);
+        root.add(title, 0, 0);
         // CSS
         root.getStylesheets().add("form.css");
 
         // Scene
-        Scene scene = new Scene(root, 400, 400);
+        Scene scene = new Scene(root, 800, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
 
