@@ -88,9 +88,6 @@ public class Main extends Application {
                         da3.getText() + " ";
 
                 System.out.println(result);
-                int i;
-                // for (i = 1; i < 9; i++)
-                // root.getChildren().remove(i);
                 root.getChildren().clear();
                 root.addRow(0, title);
                 root.addRow(1, res);
