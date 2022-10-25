@@ -1,0 +1,31 @@
+.root {
+  -fx-background-color: #1f2029;
+  -fx-alignment: center;
+}
+.label {
+  -fx-font-size: 22;
+  /* -fx-font: bold 10 "Arial"; */
+  -fx-effect: dropshadow(one-pass-box, grey, 20, 00, 0, 0);
+  -fx-text-fill: white;
+
+  -fx-padding: 10;
+}
+.button {
+  -fx-effect: dropshadow(one-pass-box, grey, 8, 0, 2, 0);
+  -fx-border-radius: 20;
+  -fx-font: bold 20 "Arial";
+  -fx-background-color: darkslateblue;
+  -fx-text-fill: white;
+}
+
+#title {
+  -fx-font: 48 "Arial";
+  -fx-text-fill: #ffeba7;
+  -fx-effect: dropshadow(one-pass-box, grey, 20, 0, 0, 0);
+}
+
+#res {
+  -fx-font: 28 "Arial";
+  -fx-text-fill: #ffeba7;
+  -fx-effect: dropshadow(one-pass-box, grey, 5, 00, 0, 0);
+}
