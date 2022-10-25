@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
-public class Main extends Application {
+public class Put extends Application {
 
     public void start(Stage primaryStage) throws Exception {
 

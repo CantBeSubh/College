@@ -29,7 +29,7 @@ public class DB {
         String[][] result = new String[5][8];
         try {
             connect();
-            ResultSet rs = stmt.executeQuery("select * from 20brs_cse1007 where Name=" + Name);
+            ResultSet rs = stmt.executeQuery("select * from 20brs_cse1007 where Name='" + Name + "';");
             int i = 0;
             while (rs.next() && i < 5) {
                 result[i][0] = rs.getString(1);

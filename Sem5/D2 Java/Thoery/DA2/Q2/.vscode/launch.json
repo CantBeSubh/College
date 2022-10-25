@@ -6,10 +6,19 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch Main",
+            "name": "Launch Put",
             "request": "launch",
-            "mainClass": "test.Main",
-            "projectName": "Q2_31b3ab9f"
+            "mainClass": "application.Put",
+            "projectName": "Q2_31b3ab9f",
+            "vmArgs": "--module-path C:/Java/openjfx-19_windows-x64_bin-sdk/javafx-sdk-19/lib --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "Launch Get",
+            "request": "launch",
+            "mainClass": "application.Get",
+            "projectName": "Q2_31b3ab9f",
+            "vmArgs": "--module-path C:/Java/openjfx-19_windows-x64_bin-sdk/javafx-sdk-19/lib --add-modules javafx.controls,javafx.fxml"
         },
         {
             "type": "java",
