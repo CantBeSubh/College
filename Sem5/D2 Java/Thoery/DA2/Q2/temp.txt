@@ -1,0 +1,27 @@
+CREATE TABLE `q2cse1007`.`20brs_cse1007` (
+  `RollNumber` INT NOT NULL COMMENT 'Roll Number of Students, starts at 1000',
+  `Name` VARCHAR(45) NULL COMMENT 'Name of Student',
+  `CAT1` INT NULL DEFAULT 50,
+  `CAT2` INT NULL DEFAULT 50,
+  `FAT` INT NULL DEFAULT 100,
+  `DA1` INT NULL DEFAULT 10,
+  `DA2` INT NULL DEFAULT 10,
+  `DA3` INT NULL DEFAULT 10,
+  PRIMARY KEY (`RollNumber`),
+  UNIQUE INDEX `RollNumber_UNIQUE` (`RollNumber` ASC) VISIBLE);
+
+
+insert into q2cse1007.20brs_cse1007 
+(RollNumber,Name,CAT1,CAT2,FAT,DA1,DA2,DA3)
+values 
+(1000,'Subhranshu',25,35,76,8,6,5),
+(1001,'Ayush',36,45,86,7,8,4),
+(1002,'Rajesh',42,32,64,8,9,6),
+(1003,'Raju',19,30,45,9,6,1),
+(1004,'Sonu',28,26,87,8,5,3),
+(1005,'Sweetie',37,38,96,8,3,3),
+(1006,'Sharuk',15,10,72,5,8,7),
+(1007,'Aditi',46,29,90,6,8,9),
+(1008,'Sejal',33,45,86,8,7,2),
+(1009,'Aman',38,35,64,7,6,5)
+;
