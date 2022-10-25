@@ -65,12 +65,7 @@ public class DB {
                     input[6] + "," +
                     input[7] + ");";
             System.out.println(query);
-            // for (int i = 0; i < input.length; i++)
-            // query += input[i] + ",";
-            // query += ");";
             stmt.execute(query);
-            //
-            // stmt.executeQuery(query);
             System.out.println("Student added");
 
         } catch (Exception e) {
