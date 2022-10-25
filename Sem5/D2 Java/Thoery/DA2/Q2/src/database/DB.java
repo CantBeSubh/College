@@ -72,4 +72,20 @@ public class DB {
             System.out.println(e);
         }
     }
+
+    public String grades(Double marks) {
+        if (marks > 90) {
+            return "A";
+        } else if ((marks > 85) && (marks < 90)) {
+            return "B";
+        } else if ((marks > 80) && (marks < 85)) {
+            return "C";
+        } else if ((marks > 70) && (marks < 80)) {
+            return "D";
+        } else if ((marks > 60) && (marks < 70)) {
+            return "E";
+        } else {
+            return "F";
+        }
+    }
 }

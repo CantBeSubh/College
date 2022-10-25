@@ -61,13 +61,21 @@ public class Get extends Application {
                 for (int i = 0; i < 5; i++) {
                     if (result[i][0] == null)
                         break;
+
+                    Double tot = Integer.parseInt(result[i][2]) * .15 +
+                            Integer.parseInt(result[i][3]) * .15 +
+                            Integer.parseInt(result[i][4]) * .4 +
+                            Integer.parseInt(result[i][5]) * 1.0 +
+                            Integer.parseInt(result[i][6]) * 1.0 +
+                            Integer.parseInt(result[i][7]) * 1.0;
                     for (int j = 0; j < 8; j++) {
                         row += result[i][j] + " | ";
                     }
-                    row += ">\n";
+                    row += ">\nTOTAL MARKS: " + tot + "\nGRADE: " + new DB().grades(tot);
+
                 }
 
-                if (row == "< >")
+                if (row == "< ")
                     row = "No result found";
                 System.out.println(row);
                 root.getChildren().clear();
