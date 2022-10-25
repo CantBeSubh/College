@@ -1,7 +1,5 @@
 package application;
 
-import database.DB;
-
 import javafx.application.Application;
 
 import javafx.scene.Scene;
@@ -18,11 +16,16 @@ import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+import database.DB;
+
 public class Get extends Application {
     public void start(Stage primaryStage) throws Exception {
+
+        // LABELS AND TEXT FIEDLS FOR INPUT
         Label Name = new Label("Name");
         TextField name = new TextField();
 
+        // TITLE
         Label title = new Label();
         title.setText("DA2 CSE1007 Q1");
         title.setId("title");
@@ -33,20 +36,18 @@ public class Get extends Application {
         Button Submit = new Button("Submit");
         Submit.setId("submit");
 
-        // Grid-pane
+        // GRID PANE
         GridPane root = new GridPane();
-        // Gap
         root.setVgap(5);
         root.setHgap(5);
-        // Alignment
         root.setAlignment(Pos.CENTER);
+        root.getStylesheets().add("form.css");
 
+        // NODES
         root.add(title, 0, 0);
         root.addRow(1, Name, name);
         root.addRow(2, Submit);
         root.addRow(3, res);
-
-        root.getStylesheets().add("form.css");
 
         Submit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -56,17 +57,17 @@ public class Get extends Application {
                 String[][] result = new String[5][8];
 
                 result = new DB().get(input);
-                String row = "";
+                String row = "< ";
                 for (int i = 0; i < 5; i++) {
                     if (result[i][0] == null)
                         break;
                     for (int j = 0; j < 8; j++) {
-                        row += result[i][j] + " ";
+                        row += result[i][j] + " | ";
                     }
-                    row += "\n";
+                    row += ">\n";
                 }
 
-                if (row == "")
+                if (row == "< >")
                     row = "No result found";
                 System.out.println(row);
                 root.getChildren().clear();
@@ -76,7 +77,7 @@ public class Get extends Application {
 
             }
         });
-        // Scene
+        // SCENE
         Scene scene = new Scene(root, 800, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
