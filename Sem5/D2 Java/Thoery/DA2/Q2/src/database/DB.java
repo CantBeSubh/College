@@ -2,7 +2,7 @@ package database;
 
 import java.sql.*;
 
-class DB {
+public class DB {
 
     private String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     private String DB_URL = "jdbc:mysql://localhost:3306/q2cse1007";
@@ -25,7 +25,7 @@ class DB {
         }
     }
 
-    String[][] get(String Name) {
+    public String[][] get(String Name) {
         String[][] result = new String[5][8];
         try {
             connect();
@@ -51,16 +51,27 @@ class DB {
         return result;
     }
 
-    void put(String[] input) {
+    public void put(String[] input) {
         try {
             connect();
-            String query = "insert into q2cse1007.20brs_cse1007 (RollNumber,Name,CAT1,CAT2,FAT,DA1,DA2,DA3) values (";
-            for (int i = 0; i < input.length; i++)
-                query += input[i];
-            query += ");";
-
-            ResultSet rs = stmt.executeQuery(query);
-            System.out.println(rs.getString(1));
+            String query = "insert into q2cse1007.20brs_cse1007 " +
+                    "(RollNumber,Name,CAT1,CAT2,FAT,DA1,DA2,DA3) values (" +
+                    input[0] + ",'" +
+                    input[1] + "'," +
+                    input[2] + "," +
+                    input[3] + "," +
+                    input[4] + "," +
+                    input[5] + "," +
+                    input[6] + "," +
+                    input[7] + ");";
+            System.out.println(query);
+            // for (int i = 0; i < input.length; i++)
+            // query += input[i] + ",";
+            // query += ");";
+            stmt.execute(query);
+            //
+            // stmt.executeQuery(query);
+            System.out.println("Student added");
 
         } catch (Exception e) {
             System.out.println(e);
