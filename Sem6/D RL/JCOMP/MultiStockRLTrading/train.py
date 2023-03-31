@@ -17,89 +17,89 @@ CUDA_LAUNCH_BLOCKING=1
 def add_features(tic_df):
 
     # Returns in the last t intervals
-    for t in range(1, 11):
-            tic_df[f'ret{t}min'] = tic_df['close'].div(tic_df['open'].shift(t-1)).sub(1)
+        for t in range(1, 11):
+                tic_df[f'ret{t}min'] = tic_df['close'].div(tic_df['open'].shift(t-1)).sub(1)
 
-    # Simple Moving Average based features
+        # Simple Moving Average based features
 
-    tic_df['sma'] = talib.SMA(tic_df['close'])
+        tic_df['sma'] = talib.SMA(tic_df['close'])
 
-    tic_df['5sma'] = talib.SMA(tic_df['close'], timeperiod=5)
+        tic_df['5sma'] = talib.SMA(tic_df['close'], timeperiod=5)
 
-    tic_df['20sma'] = talib.SMA(tic_df['close'], timeperiod=20)
+        tic_df['20sma'] = talib.SMA(tic_df['close'], timeperiod=20)
 
-    tic_df['bb_upper'], tic_df['bb_middle'], tic_df['bb_lower'] = talib.BBANDS(tic_df['close'], matype=talib.MA_Type.T3)
+        tic_df['bb_upper'], tic_df['bb_middle'], tic_df['bb_lower'] = talib.BBANDS(tic_df['close'], matype=talib.MA_Type.T3)
 
-    tic_df['bb_sell'] = (tic_df['close'] > tic_df['bb_upper'])*1
+        tic_df['bb_sell'] = (tic_df['close'] > tic_df['bb_upper'])*1
 
-    tic_df['bb_buy'] = (tic_df['close'] < tic_df['bb_lower'])*1
+        tic_df['bb_buy'] = (tic_df['close'] < tic_df['bb_lower'])*1
 
-    tic_df['bb_squeeze'] = (tic_df['bb_upper'] - tic_df['bb_lower'])/tic_df['bb_middle']
+        tic_df['bb_squeeze'] = (tic_df['bb_upper'] - tic_df['bb_lower'])/tic_df['bb_middle']
 
-    tic_df['mom'] = talib.MOM(tic_df['close'], timeperiod=10)
+        tic_df['mom'] = talib.MOM(tic_df['close'], timeperiod=10)
 
-    tic_df['adx'] = talib.ADX(tic_df['high'], tic_df['low'], tic_df['close'], timeperiod=10)
+        tic_df['adx'] = talib.ADX(tic_df['high'], tic_df['low'], tic_df['close'], timeperiod=10)
 
-    tic_df['mfi'] = talib.MFI(tic_df['high'], tic_df['low'], tic_df['close'], tic_df['volume'], timeperiod=10)
+        tic_df['mfi'] = talib.MFI(tic_df['high'], tic_df['low'], tic_df['close'], tic_df['volume'], timeperiod=10)
 
-    tic_df['rsi'] = talib.RSI(tic_df['close'], timeperiod=10)
-    
-
-    tic_df['trange'] = talib.TRANGE(tic_df['high'], tic_df['low'], tic_df['close'])
+        tic_df['rsi'] = talib.RSI(tic_df['close'], timeperiod=10)
 
 
-    tic_df['bop'] = talib.BOP(tic_df['open'], tic_df['high'], tic_df['low'], tic_df['close'])
+        tic_df['trange'] = talib.TRANGE(tic_df['high'], tic_df['low'], tic_df['close'])
 
-    tic_df['cci'] = talib.CCI(tic_df['high'], tic_df['low'], tic_df['close'], timeperiod=14)
 
-    tic_df['STOCHRSI'] = talib.STOCHRSI(tic_df['close'],timeperiod=14,fastk_period=14,fastd_period=3,fastd_matype=0)[0]
+        tic_df['bop'] = talib.BOP(tic_df['open'], tic_df['high'], tic_df['low'], tic_df['close'])
 
-    slowk, slowd = talib.STOCH(tic_df['high'], tic_df['low'], tic_df['close'], fastk_period=14,slowk_period=3,slowk_matype=0,slowd_period=3,slowd_matype=0)
+        tic_df['cci'] = talib.CCI(tic_df['high'], tic_df['low'], tic_df['close'], timeperiod=14)
 
-    macd, macdsignal, macdhist = talib.MACD(tic_df['close'], fastperiod=12, slowperiod=26, signalperiod=9)
+        tic_df['STOCHRSI'] = talib.STOCHRSI(tic_df['close'],timeperiod=14,fastk_period=14,fastd_period=3,fastd_matype=0)[0]
 
-    tic_df['slowk'] = slowk
+        slowk, slowd = talib.STOCH(tic_df['high'], tic_df['low'], tic_df['close'], fastk_period=14,slowk_period=3,slowk_matype=0,slowd_period=3,slowd_matype=0)
 
-    tic_df['slowd'] = slowd
+        macd, macdsignal, macdhist = talib.MACD(tic_df['close'], fastperiod=12, slowperiod=26, signalperiod=9)
 
-    tic_df['macd'] = macd
+        tic_df['slowk'] = slowk
 
-    tic_df['macdsignal'] = macdsignal
+        tic_df['slowd'] = slowd
 
-    tic_df['macdhist'] = macdhist
+        tic_df['macd'] = macd
 
-    tic_df['NATR'] = talib.NATR(tic_df['high'].ffill(), tic_df['low'].ffill(), tic_df['close'].ffill())
+        tic_df['macdsignal'] = macdsignal
 
-    tic_df['KAMA'] = talib.KAMA(tic_df['close'], timeperiod=10)
+        tic_df['macdhist'] = macdhist
 
-    tic_df['MAMA'], tic_df['FAMA'] = talib.MAMA(tic_df['close'])
+        tic_df['NATR'] = talib.NATR(tic_df['high'].ffill(), tic_df['low'].ffill(), tic_df['close'].ffill())
 
-    tic_df['MAMA_buy'] = np.where((tic_df['MAMA'] < tic_df['FAMA']), 1, 0)
+        tic_df['KAMA'] = talib.KAMA(tic_df['close'], timeperiod=10)
 
-    tic_df['KAMA_buy'] = np.where((tic_df['close'] < tic_df['KAMA']), 1, 0)
+        tic_df['MAMA'], tic_df['FAMA'] = talib.MAMA(tic_df['close'])
 
-    tic_df['sma_buy'] = np.where((tic_df['close'] < tic_df['5sma']), 1, 0)
+        tic_df['MAMA_buy'] = np.where((tic_df['MAMA'] < tic_df['FAMA']), 1, 0)
 
-    tic_df['maco'] = np.where((tic_df['5sma'] < tic_df['20sma']), 1, 0)
+        tic_df['KAMA_buy'] = np.where((tic_df['close'] < tic_df['KAMA']), 1, 0)
 
-    tic_df['rsi_buy'] = np.where((tic_df['rsi'] < 30), 1, 0)
+        tic_df['sma_buy'] = np.where((tic_df['close'] < tic_df['5sma']), 1, 0)
 
-    tic_df['rsi_sell'] = np.where((tic_df['rsi'] > 70), 1, 0)
+        tic_df['maco'] = np.where((tic_df['5sma'] < tic_df['20sma']), 1, 0)
 
-    tic_df['macd_buy_sell'] = np.where((tic_df['macd'] < tic_df['macdsignal']), 1, 0)
+        tic_df['rsi_buy'] = np.where((tic_df['rsi'] < 30), 1, 0)
 
-    return tic_df
+        tic_df['rsi_sell'] = np.where((tic_df['rsi'] > 70), 1, 0)
+
+        tic_df['macd_buy_sell'] = np.where((tic_df['macd'] < tic_df['macdsignal']), 1, 0)
+
+        return tic_df
 
 directory = 'history_data'
 
 indicators = ['open', 'high', 'low', 'close', 'volume', 'ToD', 'DoW',
-       'ret1min', 'ret2min', 'ret3min', 'ret4min', 'ret5min', 'ret6min',
-       'ret7min', 'ret8min', 'ret9min', 'ret10min', 'sma', '5sma', '20sma',
-       'bb_upper', 'bb_middle', 'bb_lower', 'bb_sell', 'bb_buy', 'bb_squeeze',
-       'mom', 'adx', 'mfi', 'rsi', 'trange', 'bop', 'cci', 'STOCHRSI', 'slowk',
-       'slowd', 'macd', 'macdsignal', 'macdhist', 'NATR', 'KAMA', 'MAMA',
-       'FAMA', 'MAMA_buy', 'KAMA_buy', 'sma_buy', 'maco', 'rsi_buy',
-       'rsi_sell', 'macd_buy_sell']
+        'ret1min', 'ret2min', 'ret3min', 'ret4min', 'ret5min', 'ret6min',
+        'ret7min', 'ret8min', 'ret9min', 'ret10min', 'sma', '5sma', '20sma',
+        'bb_upper', 'bb_middle', 'bb_lower', 'bb_sell', 'bb_buy', 'bb_squeeze',
+        'mom', 'adx', 'mfi', 'rsi', 'trange', 'bop', 'cci', 'STOCHRSI', 'slowk',
+        'slowd', 'macd', 'macdsignal', 'macdhist', 'NATR', 'KAMA', 'MAMA',
+        'FAMA', 'MAMA_buy', 'KAMA_buy', 'sma_buy', 'maco', 'rsi_buy',
+        'rsi_sell', 'macd_buy_sell']
 
 dfs = pd.DataFrame()
 
@@ -150,11 +150,11 @@ df_list = []
 price_df = pd.DataFrame()
 
 for i in range(num_assets):
-    df = dfs.iloc[:,i*cols_per_asset:i*cols_per_asset+cols_per_asset]
-    #print(df.columns)
-    df.drop(['datetime'], axis=1, inplace=True)
-    price_df[names[i]] = df['close']
-    df_list.append(df)
+        df = dfs.iloc[:,i*cols_per_asset:i*cols_per_asset+cols_per_asset]
+        #print(df.columns)
+        df.drop(['datetime'], axis=1, inplace=True)
+        price_df[names[i]] = df['close']
+        df_list.append(df)
 
 cols_per_asset -= 1
 
