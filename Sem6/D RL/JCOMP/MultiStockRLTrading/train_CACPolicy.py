@@ -233,7 +233,7 @@ plt.title(name)
 plt.plot(infer_steps, infer_rewards, color="red", label='Profit')
 plt.plot(infer_steps, sensex_values, color="blue", label='Index')
 plt.legend(loc="upper left")
-plt.savefig('Infer_rewards.jpg')
+plt.savefig('Infer_rewards_PPO_CACP.jpg')
 
 
 
