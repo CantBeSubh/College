@@ -38,6 +38,9 @@ class FIREBASE:
     
     def update_data(self,detected_faces):
         for name in detected_faces:
-            id=self.name_to_id[name]
-            self.postAttendance(id)
+            try:
+                id=self.name_to_id[name]
+                self.postAttendance(id)
+            except:
+                print(f'[-]No such student {name}')
         
