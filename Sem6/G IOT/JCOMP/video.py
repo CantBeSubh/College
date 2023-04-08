@@ -1,5 +1,6 @@
 import cv2
 from simple_facerec import SimpleFacerec
+from simple_firebase import FIREBASE
 
 # Encode faces from a folder
 sfr = SimpleFacerec()
@@ -18,7 +19,7 @@ while True:
         if name!="Unknown":
             clean_name = '' .join((x for x in name if not x.isdigit()))
             detected_faces.add(clean_name)
-            print("Detected Faces: ", ", ".join(detected_faces))
+            # print("Detected Faces: ", ", ".join(detected_faces))
         y1, x2, y2, x1 = face_loc[0], face_loc[1], face_loc[2], face_loc[3]
         if name in detected_faces:
             cv2.putText(frame, name,(x1, y1 - 10), cv2.FONT_HERSHEY_DUPLEX, 1, (0, 200, 0), 2)
@@ -33,5 +34,7 @@ while True:
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
+print(detected_faces)
+FIREBASE().update_data(detected_faces)
 cap.release()
 cv2.destroyAllWindows()
