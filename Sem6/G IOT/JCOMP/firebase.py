@@ -3,28 +3,6 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 import datetime
 from google.api_core.datetime_helpers import DatetimeWithNanoseconds
-
-# cred = credentials.Certificate('firebase_pvt_key.json')
-
-# app = firebase_admin.initialize_app(cred)
-
-# db = firestore.client()
-
-# student_ref = db.collection(u'Students').document(u'5dMQckm0YnOHbNuLiFkyB8XP5DH3')
-# doc = student_ref.get()
-# if doc.exists:
-#     data=doc.to_dict()['Attendance']
-#     now=DatetimeWithNanoseconds.now()
-#     now = now.replace(day=now.day-1 ,hour=18, minute=30, second=0, tzinfo=datetime.timezone.utc)
-#     now._nanosecond=0
-#     data.append(now)
-#     student_ref.update({
-#         u'Attendance': data
-#     })
-#     print(f'Attendance updated: {data}')
-# else:
-#     print(u'No such document!')
-
 class FIREBASE:
     def __init__(self):
         self.cred = credentials.Certificate('firebase_pvt_key.json')
@@ -47,19 +25,19 @@ class FIREBASE:
             now = now.replace(day=now.day-1 ,hour=18, minute=30, second=0, tzinfo=datetime.timezone.utc)
             now._nanosecond=0
             if self.compareDates(data[-1],now):
-                print(f'Attendance already updated for {id}')
+                print(f'[-]Attendance already updated for {id}')
                 return
             data.append(now)
             student_ref.update({
                 u'Attendance': data
             })
-            print(f'Attendance updated: {data}')
+            print(f'[!]Attendance updated')
         else:
-            print(u'No such document!')
-        return
+            print(u'[-]No such document!')
+        
     
     def update_data(self,detected_faces):
         for name in detected_faces:
             id=self.name_to_id[name]
             self.postAttendance(id)
-        return
+        
