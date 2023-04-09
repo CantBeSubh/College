@@ -33,6 +33,7 @@ export default function Home() {
         <form
           onSubmit={async (e) => {
             e.preventDefault();
+            if (!e.target[0].value) return alert("Please enter a company name");
             alert("Saving Stock Data...")
             const symbol = await getSymbol(e.target[0].value);
             e.target.reset();
