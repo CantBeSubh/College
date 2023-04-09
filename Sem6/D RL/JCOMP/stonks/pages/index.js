@@ -58,8 +58,8 @@ export default function Home() {
             {company &&
               company.map((i) => {
                 return (
-                  <div className="card text-white bg-dark ml-3 mb-3 mt-10 col" key={i.symbol}>
-                    <div className="card-header">{i.name}</div>
+                  <div className="card text-white ml-3 mb-3 mt-10" key={i.symbol}>
+                    <h4 className="card-header">{i.name}</h4>
                     <div className="card-body">
                       <h5 className="card-title">Stock Price: $ {Math.round(Math.random() * 100)}</h5>
                       <p className="card-text">Stock Symbol: {i.symbol}</p>
