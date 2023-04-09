@@ -43,7 +43,7 @@ export default function Home() {
 
           <div className="form-floating mb-3">
             <textarea type="text" className="form-control" id="Input" placeholder="Enter Text" autoComplete='false' />
-            <label htmlFor="Input">Enter Company's Name</label>
+            <label htmlFor="Input">Enter Company&apos;s Name</label>
           </div>
           <button className={cx(styles["button"], "w-50", "btn", "btn-lg", "btn-outline-light")} type="submit">Submit</button>
         </form>
