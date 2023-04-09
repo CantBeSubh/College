@@ -12,7 +12,8 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  backdrop-filter: brightness(1) blur(7.5px);
+  /* backdrop-filter: brightness(1) blur(7.5px); */
+  /* backdrop-filter: brightness(1); */
 }
 
 a {

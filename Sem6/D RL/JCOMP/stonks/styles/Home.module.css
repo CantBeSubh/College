@@ -14,29 +14,44 @@
   max-width: 530px;
   padding: 15px;
   margin: auto;
+  color: white;
 }
 
 .form-signin textarea {
-  min-height: 8vh;
-
+  backdrop-filter: blur(10px);
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 0px 200px rgba(255, 255, 255, .5);
 }
 
-.form-signin .checkbox {
-  font-weight: 400;
+.form-signin textarea:focus {
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, .5);
+  background-color: transparent;
+
 }
 
 .form-signin .form-floating:focus-within {
   z-index: 2;
 }
 
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+.button {
+  background-color: transparent;
+  backdrop-filter: blur(120px);
+  box-shadow: 0px 0px 200px rgba(255, 255, 255, .5);
+  animation: all 0.5s ease;
 }
 
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+.button:hover {
+  box-shadow: 0px 10px 20px rgba(255, 255, 255, .5);
+  background-color: rgba(255, 255, 255, .1);
+  color: white;
+}
+
+.button:active {
+  transform: translate(0, 2.5px);
+  box-shadow: 0px 5px 10px rgba(255, 255, 255, .5);
+  background-color: rgba(255, 255, 255, .1) !important;
+  color: white !important;
 }
