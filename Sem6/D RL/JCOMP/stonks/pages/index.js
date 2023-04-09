@@ -33,10 +33,11 @@ export default function Home() {
         <form
           onSubmit={async (e) => {
             e.preventDefault();
+            alert("Saving Stock Data...")
             const symbol = await getSymbol(e.target[0].value);
+            e.target.reset();
             await storeData(symbol);
             console.log(symbol);
-            e.target.reset();
           }}
         >
           <h1 className="h1 mb-3 fw-normal text-light">STONKS</h1>
