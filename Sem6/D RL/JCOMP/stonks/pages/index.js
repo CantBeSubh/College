@@ -6,7 +6,6 @@ import { saveAs } from 'file-saver';
 
 
 export default function Home() {
-  const [data, setData] = useState(null);
 
   const getSymbol = async (search) => {
     const res = await fetch(`/api/searchStockSymbol?search=${search}`);
@@ -17,10 +16,10 @@ export default function Home() {
   const storeData = async (symbol) => {
     const res = await fetch(`/api/getStockData?symbol=${symbol}`);
     const data = await res.json();
-    setData(data);
     const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
     saveAs(blob, `${symbol}.json`);
   }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -48,10 +47,6 @@ export default function Home() {
             <label htmlFor="Input">Enter Company's Name</label>
           </div>
           <button className={cx(styles["button"], "w-50", "btn", "btn-lg", "btn-outline-light")} type="submit">Submit</button>
-          <div className='mt-3'>
-
-          </div>
-
         </form>
       </div>
     </div>
