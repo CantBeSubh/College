@@ -4,7 +4,6 @@ import cx from 'classnames';
 import { useEffect, useState } from 'react';
 import { saveAs } from 'file-saver';
 
-
 export default function Home() {
 
   const getSymbol = async (search) => {

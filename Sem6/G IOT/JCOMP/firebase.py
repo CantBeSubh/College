@@ -9,7 +9,8 @@ class FIREBASE:
         self.app = firebase_admin.initialize_app(self.cred)
         self.db = firestore.client()
         self.name_to_id={
-            'Subhranshu':'5dMQckm0YnOHbNuLiFkyB8XP5DH3',
+            "Subhranshu":"5dMQckm0YnOHbNuLiFkyB8XP5DH3",
+            "Vignesh":"WnrodcxhdTh2j1Y1iByhAeslciv1",
         }
     def compareDates(self,date1,date2):
         if date1.year==date2.year and date1.month==date2.month and date1.day==date2.day:
@@ -31,7 +32,7 @@ class FIREBASE:
             student_ref.update({
                 u'Attendance': data
             })
-            print(f'[!]Attendance updated')
+            print(f'[!]Attendance updated for {id} ')
         else:
             print(u'[-]No such document!')
         
