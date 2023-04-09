@@ -17,7 +17,7 @@ export default function Home() {
           onSubmit={(e) => {
             e.preventDefault();
             e.target.reset();
-            alert(e.target[0].value);
+            alert(e.target[0].value || "Please enter a company's name");
           }}
         >
           <h1 className="h1 mb-3 fw-normal text-light">STONKS</h1>
