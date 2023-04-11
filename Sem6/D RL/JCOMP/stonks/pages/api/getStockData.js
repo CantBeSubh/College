@@ -1,4 +1,4 @@
-var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=<SYMBOL>&interval=15min&outputsize=full&apikey=QPKZV3VMXHXVHDX3&datatype=json';
+var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=<SYMBOL>&interval=15min&outputsize=full&apikey=QPKZV3VMXHXVHDX3&datatype=csv';
 
 const options = {
   method: 'GET',
@@ -8,7 +8,7 @@ const options = {
 
 const getStockData = async (symbol) => {
   const res = await fetch(url.replace('<SYMBOL>', symbol), options);
-  const data = await res.json();
+  const data = await res.text();
   return data;
 };
 

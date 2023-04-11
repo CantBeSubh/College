@@ -15,7 +15,7 @@ export default function Home() {
   const storeData = async (symbol) => {
     const res = await fetch(`/api/getStockData?symbol=${symbol}`);
     const data = await res.json();
-    const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+    const blob = new Blob([data], { type: "text/csv;charset=utf-8" });
     saveAs(blob, `${symbol}.json`);
   }
 
