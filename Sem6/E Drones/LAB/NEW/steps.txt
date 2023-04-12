@@ -1,0 +1,26 @@
+Before installation:
+
+1. Git clone https://github.com/4bdul4ziz/DroneSim-Installer
+2. Create a new folder anywhere
+3. Put the install.sh file in the new folder that you have created
+4. chmod +x install.sh (makes it into an executable file)
+5. ./install.sh
+
+
+
+After installation:
+
+1. Create a new python folder for running all the files.
+2. Create the python file and make it into an executable file (chmod +x <filename>.py)
+3. Go into abdaz folder in terminal : mono MissionPlanner.exe 
+4. Open a new terminal 
+5. Go into ArduPilot -> Tools -> autotest : ./fg_quad_view.sh (for running flight gear)
+6. Open a new terminal 
+7. (Optional)Go into ArduPilot -> Tools -> autotest : sudo python sim_vehicle.py —map —console -v ArduCopter
+8. Open a new terminal
+9. Go into ArduPilot -> Tools -> autotest : sudo python sim_vehicle.py -L KSFO
+10. Open an ew terminal 
+11. Run the python file from that particular folder 
+
+
+Note: for MPC program, we don’t have to run the drone simulation, directly run the python code

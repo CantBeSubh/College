@@ -1,0 +1,15 @@
+Running mission planner
+Linux:~/DroneSim-Installer-main/abdaz$ mono MissionPlanner.exe
+
+Running Flight Gear
+Linux:~/DroneSim-Installer-main/ardupilot$ ./Tools/autotest/fg_quad_view.sh
+
+Running Mavlink in 2d with Console (FAILSAFE)
+Linux:~/DroneSim-Installer-main/ardupilot/ArduCopter$ ../Tools/autotest/sim_vehicle.py --console --map
+
+Running Mavlink in 3d without console
+Linux:~/DroneSim-Installer-main/ardupilot/ArduCopter$ ../Tools/autotest/sim_vehicle.py -L KSFO
+
+If bashrc contents are deleted
+export PATH=$PATH:$HOME/ardupilot/Tools/autotest
+export PATH=/usr/lib/ccache:$PATH
