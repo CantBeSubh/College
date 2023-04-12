@@ -1,0 +1,362 @@
+[
+    {
+        "id": "db324c8818b29786",
+        "type": "tab",
+        "label": "Lab1_EXERCISE1_ECE3502",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "8b057d3352acbc94",
+        "type": "inject",
+        "z": "db324c8818b29786",
+        "name": "HR",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "HR",
+        "payload": "90",
+        "payloadType": "num",
+        "x": 110,
+        "y": 180,
+        "wires": [
+            [
+                "d2de3b13c7a2938f"
+            ]
+        ]
+    },
+    {
+        "id": "ecc1cf3b8539a057",
+        "type": "inject",
+        "z": "db324c8818b29786",
+        "name": "SPO2",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SPO2",
+        "payload": "90",
+        "payloadType": "num",
+        "x": 110,
+        "y": 260,
+        "wires": [
+            [
+                "5bb1e881ebcf9066"
+            ]
+        ]
+    },
+    {
+        "id": "a29879ed3cf29ce6",
+        "type": "inject",
+        "z": "db324c8818b29786",
+        "name": "BP",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "BP",
+        "payload": "90",
+        "payloadType": "num",
+        "x": 110,
+        "y": 340,
+        "wires": [
+            [
+                "115eadd7d4b8a8c3"
+            ]
+        ]
+    },
+    {
+        "id": "c45290f16e716cf8",
+        "type": "join",
+        "z": "db324c8818b29786",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "3",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 650,
+        "y": 260,
+        "wires": [
+            [
+                "388d0c53efa858c9"
+            ]
+        ]
+    },
+    {
+        "id": "d2de3b13c7a2938f",
+        "type": "random",
+        "z": "db324c8818b29786",
+        "name": "",
+        "low": "90",
+        "high": "100",
+        "inte": "true",
+        "property": "payload",
+        "x": 220,
+        "y": 180,
+        "wires": [
+            [
+                "c45290f16e716cf8",
+                "9e53894c6695fb55"
+            ]
+        ]
+    },
+    {
+        "id": "9e53894c6695fb55",
+        "type": "ui_gauge",
+        "z": "db324c8818b29786",
+        "name": "",
+        "group": "539884f48ea6548f",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "HR",
+        "label": "units",
+        "format": "{{value}}",
+        "min": "60",
+        "max": "120",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 330,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "4fced7dbd94e0b3d",
+        "type": "ui_gauge",
+        "z": "db324c8818b29786",
+        "name": "",
+        "group": "539884f48ea6548f",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "SPO2",
+        "label": "units",
+        "format": "{{value}}",
+        "min": "60",
+        "max": "120",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 330,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "0b22e71afe6781c8",
+        "type": "ui_gauge",
+        "z": "db324c8818b29786",
+        "name": "",
+        "group": "539884f48ea6548f",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "BP LEVEL",
+        "label": "units",
+        "format": "{{value}}",
+        "min": "60",
+        "max": "120",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 350,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "5bb1e881ebcf9066",
+        "type": "random",
+        "z": "db324c8818b29786",
+        "name": "",
+        "low": "90",
+        "high": "100",
+        "inte": "true",
+        "property": "payload",
+        "x": 220,
+        "y": 260,
+        "wires": [
+            [
+                "c45290f16e716cf8",
+                "4fced7dbd94e0b3d"
+            ]
+        ]
+    },
+    {
+        "id": "115eadd7d4b8a8c3",
+        "type": "random",
+        "z": "db324c8818b29786",
+        "name": "",
+        "low": "90",
+        "high": "120",
+        "inte": "true",
+        "property": "payload",
+        "x": 220,
+        "y": 340,
+        "wires": [
+            [
+                "c45290f16e716cf8",
+                "0b22e71afe6781c8"
+            ]
+        ]
+    },
+    {
+        "id": "0611c7bbc6ad8533",
+        "type": "e-mail",
+        "z": "db324c8818b29786",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "tls": true,
+        "name": "subhranshupati0412@gmail.com",
+        "dname": "",
+        "x": 960,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "18b0e7e1f6debb1f",
+        "type": "debug",
+        "z": "db324c8818b29786",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "388d0c53efa858c9",
+        "type": "function",
+        "z": "db324c8818b29786",
+        "name": "function 2",
+        "func": "var hr = msg.payload[\\"HR\\"];\\nvar sp = msg.payload[\\"SP02\\"];\\nvar bp = msg.payload[\\"BP\\"];\\n\\nmsg.to = \\"subhranshupati0412@gmail.com\\";\\nmsg.from = \\"subhranshupati0412@gmail.com\\";\\n\\nvar d = new Date();\\nif (hr >= 90 && sp >= 98 && bp >= 128) {\\n    msg.topic = \\"Drug consumption level high\\";\\n}\\nelse if (hr <= 68 && sp <= 80 && bp <= 90) {\\n    msg.topic = \\"Drug consumption level low\\";\\n}\\nelse {\\n    msg.topic = \\"Drug consumption level medium\\";\\n}\\n\\nmsg.payload = \\"time: \\" + d + \\"\\\\n drug consumption level: \\" + \\"HR: \\" + hr + \\" SPO2: \\" + sp + \\" BP: \\" + bp;\\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 260,
+        "wires": [
+            [
+                "18b0e7e1f6debb1f",
+                "0611c7bbc6ad8533",
+                "79b0aaf921121509",
+                "573514af2f9c4257"
+            ]
+        ]
+    },
+    {
+        "id": "79b0aaf921121509",
+        "type": "ui_text",
+        "z": "db324c8818b29786",
+        "group": "539884f48ea6548f",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Drum consumption level",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 1010,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "573514af2f9c4257",
+        "type": "ui_toast",
+        "z": "db324c8818b29786",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "topic": "",
+        "name": "",
+        "x": 970,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "539884f48ea6548f",
+        "type": "ui_group",
+        "name": "lab1_ex1_grp",
+        "tab": "0602addc88548296",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "0602addc88548296",
+        "type": "ui_tab",
+        "name": "lab1_ex1",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
